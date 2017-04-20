@@ -1,6 +1,6 @@
 <div class="container">
 
-<h1>Current Blog Posts</h1>
+<h1>Current Blog Posts -current</h1>
 
 	<h1>Welcome <%= current_user.name%></h1>
 
@@ -22,9 +22,9 @@
 
 				<%= link_to 'Edit', edit_blog_post_path(blog_post), class: "btn btn-warning" %>
 				<%= link_to 'Destroy', blog_post, method: :delete, data: {confirm: "are you sure?"}, class: "btn btn-danger" %>
-			</div>
+			 </div>
 			<% end %>
-			
+
 			</div>
 		</div>
 	</div>
