@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<%= @blog_post.title %>
+	</div>
+
+	<div class="panel-body">
+		<p><%= @blog_post.user.username , user_profile_path(id: @blog_post.user.id) %></p>
+		<p><%= time_ago_in_words(@blog_post.created_at) %></p>
+		<p><%= @blog_post.blog_entry %></p>
+	</div>
+</div>
+	<div class="panel-footer">
+		<% if current_user.id == @blog_post.user.id %>
+		<div>
+		<%= link_to 'Edit', edit_blog_post_path(@blog_post), class: "btn btn-warning" %>
+		<%= link_to "All Blog Posts", blog_posts_path, class: "btn btn-primary" %>
+	</div>
+	<% end %>
+	</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Comments
+	</div>
+	<div class="panel-body">
+		<%= render @comment %>
+	</div>
+</div>
+
+<div class="panel panel-success">
+	<div class="panel-heading">
+		Make a Comment
+	</div>
+	<div class="panel-body">
+		<%= render 'comments/form' %>
+	</div>
+</div>
+
+<div>
+	<%= link_to 'All Blog Posts', blog_posts_path, class: 'btn btn-primary' %>
+</div>
+
+</div>

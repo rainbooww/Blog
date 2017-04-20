@@ -1,0 +1,40 @@
+<div class="container">
+
+<h1>Current Blog Posts</h1>
+
+	<h1>Welcome <%= current_user.name%></h1>
+
+<div class="row">
+	<% @blog_posts.each do |blog_post| %>
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<%= link_to blog_post.title, blog_post %>
+			</div>
+			<div class="panel-body">
+				by <%= link_to blog_post.user.username, user_profile_path(:id blog_post.user.id) %> <br>
+				<p>Created at: <%= blog_post.created_at.strftime('%m/%d/%Y at %I:%M%p') %></p>
+				<p><%= blog_post.blog_entry[0..250] %>...<%= link_to "Read More", blog_post %></p>
+			</div>
+			<div class="panel-footer">
+				<% if current_user.id == blog_post.user.id %>
+				<div>
+
+				<%= link_to 'Edit', edit_blog_post_path(blog_post), class: "btn btn-warning" %>
+				<%= link_to 'Destroy', blog_post, method: :delete, data: {confirm: "are you sure?"}, class: "btn btn-danger" %>
+			</div>
+			<% end %>
+			
+			</div>
+		</div>
+	</div>
+	<% end %>
+</div>
+
+<br>
+
+<div>
+	<%= link_to 'New Blog Post', new_blog_post_path %>
+</div>
+
+</div>
