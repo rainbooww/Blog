@@ -9,15 +9,17 @@ class BlogPostsController < ApplicationController
     @comment = Comment.new
   end
 
-#whenever we create a new pg, if we want to put in view, create a method 
+#whenever we create a new pg, if we want to put in view, create a method
   def user_profile
-    @user = User.find(params[:id])
+    @user = BlogPost.find(blog_post_params[:user_id])
   end
 #control views and data, we dont need to put any method inside, only if we want to render our page
   def your_posts
 
   end
+
   def edit
+
   end
 
   def new
@@ -64,4 +66,5 @@ class BlogPostsController < ApplicationController
 	def set_blog_post
 	@blog_post = BlogPost.find(params[:id])
 	end
+
 end

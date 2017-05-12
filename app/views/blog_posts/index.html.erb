@@ -1,6 +1,6 @@
 <div class="container">
 
-<h1>Current Blog Posts -current</h1>
+<h1>Current Blog Posts</h1>
 
 	<h1>Welcome <%= current_user.name%></h1>
 
@@ -12,7 +12,7 @@
 				<%= link_to blog_post.title, blog_post %>
 			</div>
 			<div class="panel-body">
-				by <%= link_to blog_post.user.username, user_profile_path(:id blog_post.user.id) %> <br>
+				by <%= link_to blog_post.user.username, user_profile_path(blog_post.user.id) %> <br>
 				<p>Created at: <%= blog_post.created_at.strftime('%m/%d/%Y at %I:%M%p') %></p>
 				<p><%= blog_post.blog_entry[0..250] %>...<%= link_to "Read More", blog_post %></p>
 			</div>
